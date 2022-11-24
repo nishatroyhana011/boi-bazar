@@ -6,6 +6,11 @@ import Category from '../Pages/Category';
 import Blog from '../Pages/Blog';
 import Login from '../Pages/Login';
 import Signup from '../Pages/Signup';
+import SellerRoute from "./SellerRoute";
+import AddProduct from '../Dashboard/Seller/AddProduct';
+import MyProducts from '../Dashboard/Seller/MyProducts';
+import MyOrders from '../Dashboard/Buyer/MyOrders';
+import BuyerRoute from "./BuyerRoute";
 
 const router = createBrowserRouter([
     {
@@ -37,10 +42,19 @@ const router = createBrowserRouter([
     },
     {
         path: '/dashboard',
-        element:<DashBoard></DashBoard>,
+        element:<SellerRoute><DashBoard></DashBoard></SellerRoute>,
         children: [
             {
-                
+                path:'dashboard/addproduct',
+                element:<SellerRoute><AddProduct></AddProduct></SellerRoute>
+            },
+            {
+                path:'dashboard/myproducts',
+                element:<SellerRoute><MyProducts></MyProducts></SellerRoute>
+            },
+            {
+                path:'dashboard/myorders',
+                element:<BuyerRoute><MyOrders></MyOrders></BuyerRoute>
             },
            
 

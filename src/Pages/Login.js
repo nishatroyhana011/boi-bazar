@@ -3,7 +3,7 @@ import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../AuthConfig/AuthProvider';
-
+import {  Buttons} from "../components/Buttons";
 const Login = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [loginError, setLoginError] = useState('');
@@ -69,7 +69,7 @@ const Login = () => {
                 <img className='w-3/4' src="https://img.freepik.com/free-vector/tablet-login-concept-illustration_114360-7883.jpg?w=740&t=st=1669285226~exp=1669285826~hmac=302f6b04e78195c68aab97de91ff0cc11dfc2b833659d877531804ebbac47d4d" alt="" />
             </div>
             <div className='w-1/2'>
-                <p className='text-lg text-orange-500 font-semibold'>SignUp</p>
+                <p className='text-2xl text-orange-500 font-semibold'>Sign In</p>
                 <form onSubmit={handleSubmit(handleLogin)}>
                     <div className="form-control w-full ">
                         <label className="label"> <span className="label-text">Email</span></label>
@@ -86,13 +86,13 @@ const Login = () => {
                         {errors.password && <p className='text-red-500'>{errors.password.message}</p>}
                     </div>
 
-                    <input className='btn btn-accent w-full mt-4 bg-blue-500 text-white p-4  rounded' value="Login" type="submit" />
+                    <input className='btn border border-orange-500 w-full mt-4 bg-gradient-to-r from-orange-500 to-yellow-500 text-white p-4  rounded' value="Login" type="submit" />
                     {loginError && <p className='text-red-600'>{loginError}</p>}
-
+                    
                 </form>
-                <p>Don't have an account <Link className='text-secondary' to="/signup">Please Register</Link></p>
+                <p>Don't have an account <Link className='text-orange-600' to="/signup">Please Register</Link></p>
                 <div className="divider">OR</div>
-                <button onClick={handleGoogleLogin} className='btn btn-outline w-full bg-green-500 text-white p-4 rounded'>CONTINUE WITH GOOGLE</button>
+                <button onClick={handleGoogleLogin} className='btn btn-outline w-full text-orange-600 border-orange-600 p-4 rounded'>CONTINUE WITH GOOGLE</button>
             </div>
         </div>
     );

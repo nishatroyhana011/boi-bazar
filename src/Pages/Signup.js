@@ -69,10 +69,10 @@ const Signup = () => {
     return (
         <div className='flex justify-around items-center w-11/12 mx-auto'>
             <div>
-                <img className='w-3/4' src="https://img.freepik.com/free-vector/tablet-login-concept-illustration_114360-7883.jpg?w=740&t=st=1669285226~exp=1669285826~hmac=302f6b04e78195c68aab97de91ff0cc11dfc2b833659d877531804ebbac47d4d" alt="" />
+                <img className='w-3/4' src="https://img.freepik.com/free-vector/sign-up-concept-illustration_114360-7885.jpg?w=740&t=st=1669306643~exp=1669307243~hmac=b5bc989dc729574475cee767d5afb99e76d4189548c511436f20939e143a81c4" alt="" />
             </div>
             <div className='w-1/2'>
-                <p className='text-lg text-orange-500 font-semibold'>SignUp</p>
+                <p className='text-2xl text-orange-500 font-semibold'>SignUp</p>
                 <form onSubmit={handleSubmit(handleRegister)}>
                     <div className="form-control w-full">
                         <label className="label"> <span className="label-text">Name</span></label>
@@ -108,12 +108,13 @@ const Signup = () => {
                         <option>buyer</option>
                     </select>
 
-                    <input className='btn btn-accent w-full mt-4 bg-blue-500 text-white p-4  rounded' value="Sign Up" type="submit" />
+
+                    <input className='btn border border-orange-500 w-full mt-4 bg-gradient-to-r from-orange-500 to-yellow-500 text-white p-4  rounded' value="Sign Up" type="submit" />
                     {signUpError && <p className='text-red-600'>{signUpError}</p>}
 
                 </form>
                 <Toaster />
-                <p>Already have an account <Link className='text-secondary' to="/login">Please Login</Link></p>
+                <p>Already have an account <Link className='text-orange-600' to="/login">Please Login</Link></p>
                 
             </div>
         </div>
