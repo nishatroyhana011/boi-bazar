@@ -8,7 +8,7 @@ const useSeller = email =>{
             fetch(`http://localhost:5000/users/seller/${email}`)
             .then(res => res.json())
             .then(data =>{
-                setIsSeller(data.Seller)
+                setIsSeller(data.isSeller)
                 setIsSellerLoading(false)
             })
     }, [email])

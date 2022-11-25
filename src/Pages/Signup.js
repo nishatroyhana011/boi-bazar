@@ -105,7 +105,7 @@ const Signup = () => {
                     <label className="label"> <span className="label-text">Want to be a seller? please select</span></label>
                     <select {...register("role")} className="select w-full  border border-slate-300 rounded-md">
                         <option>Seller</option>
-                        <option>buyer</option>
+                        <option>Buyer</option>
                     </select>
 
 

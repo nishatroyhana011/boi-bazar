@@ -5,10 +5,10 @@ const useBuyer = email =>{
     const [isBuyerLoading, setIsBuyerLoading] = useState(true)
     
     useEffect(()=>{
-            fetch(`http://localhost:5000/users/Buyer/${email}`)
+            fetch(`http://localhost:5000/users/buyer/${email}`)
             .then(res => res.json())
             .then(data =>{
-                setIsBuyer(data.Buyer)
+                setIsBuyer(data.isBuyer)
                 setIsBuyerLoading(false)
             })
     }, [email])

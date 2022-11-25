@@ -55,7 +55,7 @@ const Login = () => {
         googleLoginProvider(googleProvider)
             .then(result => {
                 const user = result.user;
-                const role = 'buyer';
+                const role = 'Buyer';
                 saveUser(user.displayName, user.email, user.photoURL, role)
 
             })
