@@ -42,7 +42,6 @@ const Signup = () => {
 
     //sign in with email
     const handleRegister = (data) => {
-        console.log(data)
         const myname = data.name;
         const role = data.role;
         const image = data.image;

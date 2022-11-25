@@ -9,7 +9,7 @@ const AdminRoute = ({children}) => {
     const location = useLocation();
 
     if(isAdminLoading){
-        return <div className='w-20 h-20 border-8 border-orange-500 border-dashed animate-spin'></div>
+        return <div className='w-20 h-20 rounded-full mx-auto border-8 border-orange-500 border-dashed animate-spin'></div>
     }
 
     if(isAdmin){

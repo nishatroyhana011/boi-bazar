@@ -30,7 +30,8 @@ const DashBoard = () => {
                 }
                 {
                     isAdmin && <>
-                         <p><Link to='/dashboard/allseller'>All Sellers</Link></p>
+                        <p><Link to='/dashboard/addcategory'>Add Category</Link></p>
+                        <p><Link to='/dashboard/allseller'>All Sellers</Link></p>
                         <p><Link to='/dashboard/allbuyer'>All Buyers</Link></p>
                         <p><Link to='/dashboard/reporteditems'>Reported iItems</Link></p>
                     </>

@@ -17,6 +17,7 @@ import AllSeller from '../Dashboard/Admin/AllSeller'
 import AllBuyer from '../Dashboard/Admin/AllBuyer'
 import ReportedItems from '../Dashboard/Admin/ReportedItems';
 import AdminRoute from "./AdminRoute";
+import AddCategory from "../Dashboard/Admin/AddCategory";
 
 const router = createBrowserRouter([
     {
@@ -48,11 +49,11 @@ const router = createBrowserRouter([
     {
         path: '/dashboard',
         element:<PrivateRoute><DashBoard></DashBoard></PrivateRoute>,
-        children: [
+        children: [ 
             {
-                path:'/dashboard',
+                path:'/dashboard/profile',
                 element:<Profile></Profile>
-            }, 
+            },
             {
                 path:'/dashboard/myorders',
                 element:<MyOrders></MyOrders>
@@ -76,6 +77,10 @@ const router = createBrowserRouter([
             {
                 path:'/dashboard/reporteditems',
                 element:<AdminRoute><ReportedItems></ReportedItems> </AdminRoute>
+            },
+            {
+                path:'/dashboard/addcategory',
+                element:<AdminRoute><AddCategory></AddCategory></AdminRoute>
             }
             
            
