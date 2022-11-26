@@ -26,14 +26,14 @@ const AddCategory = () => {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
-                authorization: `bearer ${localStorage.getItem('accessToken')}`
+                authorization: `bearer ${localStorage.getItem('boibazarToken')}`
             },
             body: JSON.stringify(setCategory)
         })
-            .then(res => res.json())
-            .then(result => {
-                console.log(result)
-            })
+        .then(res => res.json())
+        .then(result => {
+            console.log(result)
+        })
     }
 
     return (

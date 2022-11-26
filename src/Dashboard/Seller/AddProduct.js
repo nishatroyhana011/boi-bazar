@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import toast, { Toaster } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
@@ -44,13 +44,13 @@ const AddProduct = () => {
             },
             body: JSON.stringify(product)
         })
-            .then(res => res.json())
-            .then(result => {
-                toast('Book added!')
-                if (result.acknowledged) {
-                    navigate('/dashboard/myproducts');
-                }
-            })
+        .then(res => res.json())
+        .then(result => {
+            if (result.acknowledged) {
+                navigate('/dashboard/myproducts');
+            }
+        })
+        toast('Book added!')
     }
 
     return (
@@ -144,8 +144,8 @@ const AddProduct = () => {
                         {errors.description && <p className='text-red-500'>{errors.description.message}</p>}
                     </div>
                 <input className='btn border border-orange-500 w-full mt-4 bg-gradient-to-r from-orange-500 to-yellow-500 text-white p-4  rounded' value="Add a Book" type="submit" />
+                <Toaster />
             </form>
-            <Toaster />
         </div>
     );
 };
