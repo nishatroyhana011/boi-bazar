@@ -56,7 +56,7 @@ const Signup = () => {
                 updateUser(userName)
                     .then(() => {
                         toast('User Created Succcessfully!');
-                        saveUser(myname, user.email, image, role)
+                        saveUser(myname, user.email, image, role);
                     })
                     .catch(err => setSignUPError(err.message))
             })
