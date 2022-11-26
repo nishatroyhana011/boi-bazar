@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { AuthContext } from '../AuthConfig/AuthProvider';
+import Profile from '../Dashboard/Profile';
 import useAdmin from '../Hooks/useAdmin';
 import useSeller from '../Hooks/useSeller';
 import Footer from '../Shared/Footer';
@@ -17,13 +18,19 @@ const DashBoard = () => {
             <div className="drawer drawer-mobile">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content">
-                <Outlet></Outlet>
+                    <p>hello User</p>
+                 
+                <Outlet>
+                  
+                </Outlet>
+
                 </div>
                 <div className="drawer-side">
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-80 bg-base-100 text-base-content">
                     {
                     isSeller && <>
+                    
                         <p><Link to='/dashboard/addproduct'>Add a Product</Link></p>
                         <p><Link to='/dashboard/myproducts'>My Product</Link></p>
                     </> 

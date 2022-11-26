@@ -51,35 +51,35 @@ const router = createBrowserRouter([
         element:<PrivateRoute><DashBoard></DashBoard></PrivateRoute>,
         children: [ 
             {
-                path:'/dashboard/profile',
+                path:'',
                 element:<Profile></Profile>
             },
             {
-                path:'/dashboard/myorders',
+                path:'myorders',
                 element:<MyOrders></MyOrders>
             },
             {
-                path:'/dashboard/addproduct',
+                path:'addproduct',
                 element:<SellerRoute><AddProduct></AddProduct></SellerRoute>
             },
             {
-                path:'/dashboard/myproducts',
+                path:'myproducts',
                 element:<SellerRoute><MyProducts></MyProducts></SellerRoute>
             },
             {
-                path:'/dashboard/allbuyer',
+                path:'allbuyer',
                 element:<AdminRoute><AllBuyer></AllBuyer></AdminRoute>
             },
             {
-                path:'/dashboard/allseller',
+                path:'allseller',
                 element:<AdminRoute><AllSeller></AllSeller></AdminRoute>
             },
             {
-                path:'/dashboard/reporteditems',
+                path:'reporteditems',
                 element:<AdminRoute><ReportedItems></ReportedItems> </AdminRoute>
             },
             {
-                path:'/dashboard/addcategory',
+                path:'addcategory',
                 element:<AdminRoute><AddCategory></AddCategory></AdminRoute>
             }
             

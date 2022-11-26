@@ -35,7 +35,6 @@ const AddProduct = () => {
             description:data.description,
             email:user.email
         }
-        console.log(product)
 
         fetch('http://localhost:5000/products', {
             method: 'POST',
@@ -56,7 +55,7 @@ const AddProduct = () => {
 
     return (
         <div className='my-20'>
-            <h2 className='text-xl text-center'>Add a Product</h2>
+            <h1 className="text-3xl text-orange-600 font-bold">Add a Book</h1>
             <form className='w-3/4 mx-auto ' onSubmit={handleSubmit(AddProduct)}>
                 <div className="form-control w-full">
                     <label className="label"> <span className="label-text">Name</span></label>
