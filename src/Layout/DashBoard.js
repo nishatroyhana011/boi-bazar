@@ -23,25 +23,25 @@ const DashBoard = () => {
                 </div>
                 <div className="drawer-side">
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-                    <ul className="menu p-4 w-80 bg-base-100 text-base-content">
+                    <ul className="menu mt-24 p-4 w-60 bg-base-100 text-base-content">
                         {
                             user && <>
-                             <p><Link to='/dashboard/myorders'>My Orders</Link></p>
+                             <p className='border-b border-orange-500 my-2'><Link to='/dashboard/myorders'>My Orders</Link></p>
                             </>
                         }
                         {
                             isSeller && <>
 
-                                <p><Link to='/dashboard/addproduct'>Add a Product</Link></p>
-                                <p><Link to='/dashboard/myproducts'>My Product</Link></p>
+                                <p className='border-b border-orange-500 my-2'><Link to='/dashboard/addproduct'>Add a Product</Link></p>
+                                <p className='border-b border-orange-500 my-2'><Link to='/dashboard/myproducts'>My Product</Link></p>
                             </>
                         }
                         {
                             isAdmin && <>
-                                <p><Link to='/dashboard/addcategory'>Add Category</Link></p>
-                                <p><Link to='/dashboard/allseller'>All Sellers</Link></p>
-                                <p><Link to='/dashboard/allbuyer'>All Buyers</Link></p>
-                                <p><Link to='/dashboard/reporteditems'>Reported Items</Link></p>
+                                <p className='border-b border-orange-500 my-2'><Link to='/dashboard/addcategory'>Add Category</Link></p>
+                                <p className='border-b border-orange-500 my-2'><Link to='/dashboard/allseller'>All Sellers</Link></p>
+                                <p className='border-b border-orange-500 my-2'><Link to='/dashboard/allbuyer'>All Buyers</Link></p>
+                                <p className='border-b border-orange-500 my-2'><Link to='/dashboard/reporteditems'>Reported Items</Link></p>
                             </>
                         }
                     </ul>

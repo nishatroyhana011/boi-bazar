@@ -8,7 +8,6 @@ export const AuthContext = createContext();
 const AuthProvider = ({children}) => {
     const [loader, setLoader] = useState(true);
     const [user, setUser] = useState('');
-
     const userReg = (email, password)=>{
         setLoader(true)
         return createUserWithEmailAndPassword(auth, email, password)
@@ -34,6 +33,7 @@ const AuthProvider = ({children}) => {
         const unsubs = onAuthStateChanged(auth, currentUser =>{
             setUser(currentUser)
             setLoader(false)
+
         });
         return ()=> unsubs();
     }, [])

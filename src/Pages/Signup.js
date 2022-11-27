@@ -8,7 +8,7 @@ import { AuthContext } from '../AuthConfig/AuthProvider';
 const Signup = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [signUpError, setSignUPError] = useState('')
-    const { userReg, updateUser } = useContext(AuthContext);
+    const { userReg, updateUser, setLoader } = useContext(AuthContext);
 
     const navigate = useNavigate();
 
@@ -25,7 +25,8 @@ const Signup = () => {
         .then(res => res.json())
         .then((data) => {
             verifyUser(email)
-            navigate('/login');
+            // setLoader(false)
+            navigate('/');
         })
     }
 
@@ -55,8 +56,10 @@ const Signup = () => {
                 }
                 updateUser(userName)
                     .then(() => {
+                        setLoader(false)
                         toast('User Created Succcessfully!');
                         saveUser(myname, user.email, image, role);
+
                     })
                     .catch(err => setSignUPError(err.message))
             })
@@ -103,8 +106,8 @@ const Signup = () => {
                     </div>
                     <label className="label"> <span className="label-text">Want to be a seller? please select</span></label>
                     <select {...register("role")} className="select w-full  border border-slate-300 rounded-md">
-                        <option>Seller</option>
                         <option>Buyer</option>
+                        <option>Seller</option>
                     </select>
 
 
