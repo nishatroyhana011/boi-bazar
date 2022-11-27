@@ -5,7 +5,7 @@ import { AuthContext } from '../../AuthConfig/AuthProvider';
 const BookCard = ({ book }) => {
 
     const { user } = useContext(AuthContext);
-    const { productName, image, location, resale, original, year, time, sellerName, conatct, description } = book
+    const { _id, productName, image, location, resale, original, year, time, sellerName, conatct, description } = book
     const date = (time) => {
         return new Date(time).toLocaleString();
     }
@@ -19,6 +19,7 @@ const BookCard = ({ book }) => {
         const photo = image;
         const phone = event.target.phone.value;
         const location = event.target.location.value;
+        const productId = _id
 
         const booking = {
             buyerName,
@@ -27,8 +28,8 @@ const BookCard = ({ book }) => {
             price,
             phone,
             location,
-            photo
-
+            photo,
+            productId
         }
         fetch('http://localhost:5000/bookings', {
             method: 'POST',

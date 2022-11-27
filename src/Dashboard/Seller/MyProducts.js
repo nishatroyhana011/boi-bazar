@@ -30,8 +30,20 @@ const MyProducts = () => {
                 }
             })
     }
-    const btnAdvertise = () => {
-
+    const btnAdvertise = (id) => {
+        fetch(`http://localhost:5000/books/advertise/${id}`, {
+            method: 'PUT',
+            headers: {
+                authorization: `bearer ${localStorage.getItem('boibazarToken')}`
+            }
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.modifiedCount> 0){
+                toast('Set for Advertise!')
+                refetch()
+            }
+        })
     }
     return (
         <div>
@@ -62,7 +74,7 @@ const MyProducts = () => {
                                 </td>
 
                                 <td className="p-3">
-                                    <button onClick={() => btnAdvertise(book._id)} className='bg-green-600 text-white p-3 rounded-md'>Advertise</button>
+                                    <button onClick={() => btnAdvertise(book._id)} className='btn btn-outline text-orange-600 border-orange-600 p-4 rounded'>Advertise</button>
                                 </td>
                                 <td className="p-3">
                                     <p >{book.isSold ? 'Sold' : 'Available'}</p>
