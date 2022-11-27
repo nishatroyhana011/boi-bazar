@@ -33,7 +33,8 @@ const AddProduct = () => {
             sellerName:data.seller,
             conatct:data.phone,
             description:data.description,
-            email:user.email
+            email:user.email,
+            isSold:false
         }
 
         fetch('http://localhost:5000/products', {

@@ -65,7 +65,7 @@ const MyProducts = () => {
                                 <button onClick={()=>btnAdvertise(book._id)} className='bg-green-600 text-white p-3 rounded-md'>Advertise</button>
                              </td> 
                              <td className="p-3">
-                                <p>unsold</p>
+                                <p >{book.isSold ? 'Sold' : 'Available'}</p>
                             </td>  
                         </tr>
                         )

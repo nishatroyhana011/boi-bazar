@@ -18,6 +18,7 @@ import ReportedItems from '../Dashboard/Admin/ReportedItems';
 import AdminRoute from "./AdminRoute";
 import AddCategory from "../Dashboard/Admin/AddCategory";
 import NotFound from "../Pages/NotFound";
+import Categories from "../Pages/Home/Categories";
 
 const router = createBrowserRouter([
     {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
             {
                path:'/',
                element: <Home></Home>
+            },
+            {
+                path:'/allcategories',
+                element:<Categories></Categories>
             },
             {
                 loader: ({params}) => fetch(`http://localhost:5000/category/${params.id}`),
