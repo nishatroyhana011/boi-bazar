@@ -16,7 +16,7 @@ const BookCard = ({ book }) => {
         const email = user.email;
         const bookName = productName;
         const price = resale;
-        
+        const photo = image;
         const phone = event.target.phone.value;
         const location = event.target.location.value;
 
@@ -26,7 +26,9 @@ const BookCard = ({ book }) => {
             bookName,
             price,
             phone,
-            location
+            location,
+            photo
+
         }
         fetch('http://localhost:5000/bookings', {
             method: 'POST',

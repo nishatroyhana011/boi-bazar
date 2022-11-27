@@ -10,7 +10,6 @@ import SellerRoute from "./SellerRoute";
 import AddProduct from '../Dashboard/Seller/AddProduct';
 import MyProducts from '../Dashboard/Seller/MyProducts';
 import MyOrders from '../Dashboard/Buyer/MyOrders';
-import BuyerRoute from "./BuyerRoute";
 import Profile from "../Dashboard/Profile";
 import PrivateRoute from "./PrivateRoute";
 import AllSeller from '../Dashboard/Admin/AllSeller'
@@ -18,6 +17,7 @@ import AllBuyer from '../Dashboard/Admin/AllBuyer'
 import ReportedItems from '../Dashboard/Admin/ReportedItems';
 import AdminRoute from "./AdminRoute";
 import AddCategory from "../Dashboard/Admin/AddCategory";
+import NotFound from "../Pages/NotFound";
 
 const router = createBrowserRouter([
     {
@@ -44,6 +44,10 @@ const router = createBrowserRouter([
             {
                 path:'/signup',
                 element:<Signup></Signup>
+            },
+            {
+                path: '*',
+                element: <NotFound></NotFound>
             }  
         ]
     },
