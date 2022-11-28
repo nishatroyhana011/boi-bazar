@@ -3,7 +3,7 @@ import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../AuthConfig/AuthProvider';
-import {  Buttons} from "../components/Buttons";
+
 const Login = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [loginError, setLoginError] = useState('');
@@ -33,7 +33,6 @@ const Login = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.accessToken) {
-                    console.log("ff")
                     localStorage.setItem('boibazarToken', data.accessToken);
                     navigate('/');
                 }

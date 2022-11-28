@@ -64,7 +64,6 @@ const AllSeller = () => {
                                     {
                                         seller.name
                                     }
-
                                 </td>
                                 <td className="p-2">
                                     <p>{seller.email}</p>

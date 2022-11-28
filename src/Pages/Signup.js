@@ -4,7 +4,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 import { AuthContext } from '../AuthConfig/AuthProvider';
 
-
 const Signup = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [signUpError, setSignUPError] = useState('')
@@ -25,7 +24,6 @@ const Signup = () => {
         .then(res => res.json())
         .then((data) => {
             verifyUser(email)
-            // setLoader(false)
             navigate('/');
         })
     }

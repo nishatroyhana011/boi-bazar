@@ -1,16 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { AuthContext } from '../AuthConfig/AuthProvider';
-import useAdmin from '../Hooks/useAdmin';
-import useBuyer from '../Hooks/useBuyer';
-import useSeller from '../Hooks/useSeller';
-import AddProduct from './Seller/AddProduct';
 
 const Profile = () => {
     const { user } = useContext(AuthContext);
-    const [isAdmin] = useAdmin(user?.email)
-    const [isSeller] = useSeller(user?.email)
-    const [isBuyer] = useBuyer(user?.email)
     const [loggedInUser, setLoggedInUser] = useState('')
 
     const url = `https://boi-bazar-server-opal.vercel.app/users?email=${user?.email}`;

@@ -1,4 +1,3 @@
-import { useQuery } from '@tanstack/react-query';
 import React, { useContext, useEffect, useState } from 'react';
 import { Toaster } from 'react-hot-toast';
 import { Link } from 'react-router-dom';
