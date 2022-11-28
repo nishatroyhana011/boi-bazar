@@ -9,7 +9,7 @@ const MyOrders = () => {
     const [orders, setOrders] = useState([])
     
     useEffect(()=>{
-        fetch(`http://localhost:5000/myorders?email=${user?.email}`, {
+        fetch(`https://boi-bazar-server-opal.vercel.app/myorders?email=${user?.email}`, {
             headers: {
                 authorization: `bearer ${localStorage.getItem('boibazarToken')}`
             }

@@ -15,7 +15,7 @@ const Signup = () => {
     //user save to db
     const saveUser = (name, email, image, role) => {
         const user = { name, email, image, role }
-        fetch('http://localhost:5000/users', {
+        fetch('https://boi-bazar-server-opal.vercel.app/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -32,7 +32,7 @@ const Signup = () => {
 
     //jwt 
     const verifyUser = (email) => {
-        fetch(`http://localhost:5000/jwt?email=${email}`)
+        fetch(`https://boi-bazar-server-opal.vercel.app/jwt?email=${email}`)
             .then(res => res.json())
             .then(data => {
                 if (data.accessToken) {
@@ -69,9 +69,9 @@ const Signup = () => {
 
 
     return (
-        <div className='flex justify-around items-center w-11/12 mx-auto'>
+        <div className='flex flex-col-reverse md:flex-row justify-around items-center w-11/12 mx-auto'>
             <div>
-                <img className='w-3/4' src="https://img.freepik.com/free-vector/sign-up-concept-illustration_114360-7885.jpg?w=740&t=st=1669306643~exp=1669307243~hmac=b5bc989dc729574475cee767d5afb99e76d4189548c511436f20939e143a81c4" alt="" />
+                <img className='w-3/4 mx-auto' src="https://img.freepik.com/free-vector/sign-up-concept-illustration_114360-7885.jpg?w=740&t=st=1669306643~exp=1669307243~hmac=b5bc989dc729574475cee767d5afb99e76d4189548c511436f20939e143a81c4" alt="" />
             </div>
             <div className='w-1/2'>
                 <p className='text-2xl text-orange-500 font-semibold'>SignUp</p>

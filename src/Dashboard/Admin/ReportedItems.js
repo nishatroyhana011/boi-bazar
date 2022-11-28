@@ -7,7 +7,7 @@ const ReportedItems = () => {
     const [reportedItems, setReportedItems] = useState([]);
 
     useEffect(()=>{
-        axios.get('http://localhost:5000/books/reported')
+        axios.get('https://boi-bazar-server-opal.vercel.app/books/reported')
         .then(data=>{
             const items = data.data;
             setReportedItems(items)
@@ -15,7 +15,7 @@ const ReportedItems = () => {
     },[])
 
     const btnDeleteItem = (id)=>{
-        fetch(`http://localhost:5000/book/${id}`, {
+        fetch(`https://boi-bazar-server-opal.vercel.app/book/${id}`, {
             method:'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('boibazarToken')}`

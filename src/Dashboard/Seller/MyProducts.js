@@ -9,13 +9,13 @@ const MyProducts = () => {
     const { data: books = [], refetch } = useQuery({
         queryKey: ['mybooks'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/mybooks?email=${user?.email}`)
+            const res = await fetch(`https://boi-bazar-server-opal.vercel.app/mybooks?email=${user?.email}`)
             const data = await res.json()
             return data;
         }
     })
     const btnDeleteBook = (id) => {
-        fetch(`http://localhost:5000/book/${id}`, {
+        fetch(`https://boi-bazar-server-opal.vercel.app/book/${id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('boibazarToken')}`
@@ -31,7 +31,7 @@ const MyProducts = () => {
             })
     }
     const btnAdvertise = (id) => {
-        fetch(`http://localhost:5000/books/advertise/${id}`, {
+        fetch(`https://boi-bazar-server-opal.vercel.app/books/advertise/${id}`, {
             method: 'PUT',
             headers: {
                 authorization: `bearer ${localStorage.getItem('boibazarToken')}`

@@ -8,7 +8,7 @@ const BookCard = ({ book }) => {
     const { _id, productName, image, location, resale, original, year, time, sellerName, conatct, description, email } = book
     const [isVerified, setIsVerified] = useState({})
 
-    const url = `http://localhost:5000/users?email=${email}`;
+    const url = `https://boi-bazar-server-opal.vercel.app/users?email=${email}`;
     useEffect(() => {
         fetch(url)
             .then(res => res.json())
@@ -42,7 +42,7 @@ const BookCard = ({ book }) => {
             photo,
             productId
         }
-        fetch('http://localhost:5000/bookings', {
+        fetch('https://boi-bazar-server-opal.vercel.app/bookings', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -57,7 +57,7 @@ const BookCard = ({ book }) => {
     }
 
     const reportToAdmin = (id) => {
-        fetch(`http://localhost:5000/books/reported/${id}`, {
+        fetch(`https://boi-bazar-server-opal.vercel.app/books/reported/${id}`, {
             method: 'PUT',
             headers: {
                 authorization: `bearer ${localStorage.getItem('boibazarToken')}`
@@ -87,7 +87,6 @@ const BookCard = ({ book }) => {
                                 </> : <>
 
                                 </>
-
                             }
                             </div>
                             <span className=" text-xs leading-none dark:text-gray-400">{conatct}</span>
@@ -123,8 +122,13 @@ const BookCard = ({ book }) => {
                         <p className="text-sm text-start">
                             {description}
                         </p>
-                        <label htmlFor="my-modal-6" className="btn border border-orange-500 w-full mt-4 bg-gradient-to-r from-orange-500 to-yellow-500 text-white p-4  rounded">Book Now</label>
-
+                        {
+                            user.email===email ? <>
+                            <button  className="btn border border-orange-500 w-full mt-4 bg-gradient-to-r from-orange-500 to-yellow-500 text-white p-4  rounded" disabled>Book Now</button>
+                            </> : <>
+                            <label htmlFor="my-modal-6" className="btn border border-orange-500 w-full mt-4 bg-gradient-to-r from-orange-500 to-yellow-500 text-white p-4  rounded">Book Now</label>
+                            </>
+                        }
                     </div>
                 </div>
             </div>

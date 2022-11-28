@@ -16,7 +16,7 @@ const CheckoutForm = ({ pay }) => {
 
   useEffect(() => {
 
-    fetch('http://localhost:5000/create-payment-intent', {
+    fetch('https://boi-bazar-server-opal.vercel.app/create-payment-intent', {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -79,7 +79,7 @@ const CheckoutForm = ({ pay }) => {
         booking: _id,
         productId,
       }
-      fetch('http://localhost:5000/payments', {
+      fetch('https://boi-bazar-server-opal.vercel.app/payments', {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

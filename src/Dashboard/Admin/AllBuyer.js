@@ -7,14 +7,14 @@ const AllBuyer = () => {
     const { data: Buyers = [], refetch } = useQuery({
         queryKey: ['allbuyers'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/allbuyers')
+            const res = await fetch('https://boi-bazar-server-opal.vercel.app/allbuyers')
             const data = await res.json()
             return data;
         }
     })
 
     const handleDelete = (id)=>{
-        fetch(`http://localhost:5000/buyer/${id}`, {
+        fetch(`https://boi-bazar-server-opal.vercel.app/buyer/${id}`, {
             method:'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('boibazarToken')}`

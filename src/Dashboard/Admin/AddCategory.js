@@ -7,7 +7,7 @@ const AddCategory = () => {
     const [loggedInUser, setLoggedInUser] = useState('')
 
 
-    const url = `http://localhost:5000/users?email=${user?.email}`;
+    const url = `https://boi-bazar-server-opal.vercel.app/users?email=${user?.email}`;
     useEffect(() => {
         fetch(url)
             .then(res => res.json())
@@ -22,7 +22,7 @@ const AddCategory = () => {
         const setCategory = {
             categoryName: category
         }
-        fetch('http://localhost:5000/categories', {
+        fetch('https://boi-bazar-server-opal.vercel.app/categories', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

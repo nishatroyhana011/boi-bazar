@@ -35,7 +35,7 @@ const router = createBrowserRouter([
                 element:<Categories></Categories>
             },
             {
-                loader: ({params}) => fetch(`http://localhost:5000/category/${params.id}`),
+                loader: ({params}) => fetch(`https://boi-bazar-server-opal.vercel.app/category/${params.id}`),
                 path:'/categories/:id',
                 element:<PrivateRoute><Category></Category></PrivateRoute>
             },
@@ -95,7 +95,7 @@ const router = createBrowserRouter([
             },
             {
                 path: 'payment/:id',
-                loader: ({params}) => fetch(`http://localhost:5000/booked/${params.id}`),
+                loader: ({params}) => fetch(`https://boi-bazar-server-opal.vercel.app/booked/${params.id}`),
                 element: <Payment></Payment>
             },
             
