@@ -3,7 +3,7 @@ import React from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 
 const AllSeller = () => {
-   
+
     const { data: sellers = [], refetch } = useQuery({
         queryKey: ['allsellers'],
         queryFn: async () => {
@@ -12,24 +12,36 @@ const AllSeller = () => {
             return data;
         }
     })
-    
-    const handleDelete = (id)=>{
+
+    const handleDelete = (id) => {
         fetch(`http://localhost:5000/seller/${id}`, {
-            method:'DELETE',
+            method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('boibazarToken')}`
             }
         })
-        .then(res => res.json())
-        .then(data =>{
-            if(data.deletedCount > 0){
-                toast('Seller Deleted!')
-               refetch()
-            }   
-        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.deletedCount > 0) {
+                    toast('Seller Deleted!')
+                    refetch()
+                }
+            })
     }
-    const handleVerify = ()=>{
-
+    const handleVerify = (id) => {
+        fetch(`http://localhost:5000/seller/verify/${id}`, {
+            method: 'PUT',
+            headers: {
+                authorization: `bearer ${localStorage.getItem('boibazarToken')}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount > 0) {
+                    toast('Seller Verified!')
+                    refetch()
+                }
+            })
     }
     return (
         <div>
@@ -46,23 +58,32 @@ const AllSeller = () => {
                 </thead>
                 <tbody>
                     {
-                       sellers.map((seller, i) =>
+                        sellers.map((seller, i) =>
                             <tr className="border-b border-opacity-20 dark:border-gray-700 dark:bg-gray-900">
                                 <td className="p-2">
-                                    <p>{seller.name}</p> 
+                                    {
+                                        seller.name
+                                    }
+
                                 </td>
                                 <td className="p-2">
                                     <p>{seller.email}</p>
                                 </td>
-                               
+
                                 <td className="p-2">
                                     <button onClick={() => handleDelete(seller._id)} className='btn border border-orange-500 bg-gradient-to-r from-orange-500 to-yellow-500 text-white p-4  rounded'>delete</button>
                                 </td>
                                 <td className="p-2">
-                                    <button onClick={() => handleVerify(seller._id)} className='btn btn-outline text-orange-600 border-orange-600 p-4 rounded'>Verify</button>
+                                    {
+                                        seller.verified ? <>
+                                            <p className='text-orange-600 font-semibold text-lg'>Verified</p>
+                                        </> : <>
+                                            <button onClick={() => handleVerify(seller._id)} className='btn btn-outline text-orange-600 border-orange-600 p-4 rounded'>Verify</button>
+                                        </>
+                                    }
                                 </td>
                             </tr>
-                       )
+                        )
                     }
                     <Toaster />
                 </tbody>

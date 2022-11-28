@@ -1,16 +1,27 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import { AuthContext } from '../../AuthConfig/AuthProvider';
 
 const BookCard = ({ book }) => {
 
     const { user } = useContext(AuthContext);
-    const { _id, productName, image, location, resale, original, year, time, sellerName, conatct, description } = book
+    const { _id, productName, image, location, resale, original, year, time, sellerName, conatct, description, email } = book
+    const [isVerified, setIsVerified] = useState({})
+
+    const url = `http://localhost:5000/users?email=${email}`;
+    useEffect(() => {
+        fetch(url)
+            .then(res => res.json())
+            .then(data => {
+                setIsVerified(data)
+            })
+    }, [email])
+
     const date = (time) => {
         return new Date(time).toLocaleString();
     }
 
-    const handleBook = (event)=>{
+    const handleBook = (event) => {
         event.preventDefault();
         const buyerName = user.displayName;
         const email = user.email;
@@ -39,34 +50,46 @@ const BookCard = ({ book }) => {
             },
             body: JSON.stringify(booking)
         })
-        .then(res => res.json())
-        .then(result => {
-            toast('Product Booked!')
-        })
+            .then(res => res.json())
+            .then(result => {
+                toast('Product Booked!')
+            })
     }
 
-    const reportToAdmin = (id)=>{
+    const reportToAdmin = (id) => {
         fetch(`http://localhost:5000/books/reported/${id}`, {
             method: 'PUT',
             headers: {
                 authorization: `bearer ${localStorage.getItem('boibazarToken')}`
             }
         })
-        .then(res => res.json())
-        .then(data => {
-            if(data.modifiedCount> 0){
-                toast('Report Sent to Admin!')
-            }
-        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount > 0) {
+                    toast('Report Sent to Admin!')
+                }
+            })
     }
 
     return (
         <div>
-            <div className="rounded-md shadow-md sm:w-96 dark:bg-gray-900 dark:text-gray-100">
+            <div className="rounded-md shadow-md dark:bg-gray-900 dark:text-gray-100">
                 <div className="flex items-center justify-between p-3">
                     <div className="flex items-center space-x-2">
                         <div className="text-start">
-                            <h2 className="text-sm font-semibold leading-none">Posted by: {sellerName}</h2>
+                            <div className='flex'>
+                            <h2 className="text-md font-semibold leading-none">Posted by: {sellerName}</h2>
+                            {
+                                isVerified.verified ? <>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="blue" className="flex-shrink-0 w-4 h-4 dark:text-violet-400">
+                                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                                    </svg>
+                                </> : <>
+
+                                </>
+
+                            }
+                            </div>
                             <span className=" text-xs leading-none dark:text-gray-400">{conatct}</span>
                             <p className="text-xs leading-none dark:text-gray-400">{location}</p>
                         </div>
@@ -83,7 +106,7 @@ const BookCard = ({ book }) => {
                                 </svg>
                             </button>
                         </div>
-                        <button onClick={()=>reportToAdmin(_id)} type="button" className="flex items-center justify-center tooltip" data-tip="Report to Admin">
+                        <button onClick={() => reportToAdmin(_id)} type="button" className="flex items-center justify-center tooltip" data-tip="Report to Admin">
                             <img className="w-5 h-5 fill-current" src="https://static.thenounproject.com/png/5070527-200.png" alt="" />
                         </button>
                     </div>
