@@ -33,6 +33,7 @@ const Login = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.accessToken) {
+                    console.log("ff")
                     localStorage.setItem('boibazarToken', data.accessToken);
                     navigate('/');
                 }
@@ -64,7 +65,7 @@ const Login = () => {
 
 
     return (
-        <div className='flex justify-around items-center w-11/12 mx-auto'>
+        <div className='flex flex-col-reverse md:flex-row justify-around items-center w-11/12 mx-auto'>
             <div>
                 <img className='w-3/4' src="https://img.freepik.com/free-vector/tablet-login-concept-illustration_114360-7883.jpg?w=740&t=st=1669285226~exp=1669285826~hmac=302f6b04e78195c68aab97de91ff0cc11dfc2b833659d877531804ebbac47d4d" alt="" />
             </div>

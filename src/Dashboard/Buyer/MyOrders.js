@@ -1,20 +1,25 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Toaster } from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../AuthConfig/AuthProvider';
 
 const MyOrders = () => {
     const { user } = useContext(AuthContext);
-    const { data: orders = [], refetch } = useQuery({
-        queryKey: ['myorders'],
-        queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/myorders?email=${user?.email}`)
-            const data = await res.json()
-            return data;
-        }
-    })
-    console.log(orders)
+    const [orders, setOrders] = useState([])
+    
+    useEffect(()=>{
+        fetch(`http://localhost:5000/myorders?email=${user?.email}`, {
+            headers: {
+                authorization: `bearer ${localStorage.getItem('boibazarToken')}`
+            }
+        })
+        .then(res => res.json())
+        .then(data =>{
+            setOrders(data)   
+        })
+    },[user.email])
+    
     return (
         <div>
             <p className='text-orange-600 text-3xl font-bold text-start my-10'>My Orders</p>

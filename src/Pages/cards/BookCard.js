@@ -42,7 +42,21 @@ const BookCard = ({ book }) => {
         .then(res => res.json())
         .then(result => {
             toast('Product Booked!')
-            console.log(result)
+        })
+    }
+
+    const reportToAdmin = (id)=>{
+        fetch(`http://localhost:5000/books/reported/${id}`, {
+            method: 'PUT',
+            headers: {
+                authorization: `bearer ${localStorage.getItem('boibazarToken')}`
+            }
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.modifiedCount> 0){
+                toast('Report Sent to Admin!')
+            }
         })
     }
 
@@ -69,7 +83,7 @@ const BookCard = ({ book }) => {
                                 </svg>
                             </button>
                         </div>
-                        <button type="button" className="flex items-center justify-center tooltip" data-tip="Report to Admin">
+                        <button onClick={()=>reportToAdmin(_id)} type="button" className="flex items-center justify-center tooltip" data-tip="Report to Admin">
                             <img className="w-5 h-5 fill-current" src="https://static.thenounproject.com/png/5070527-200.png" alt="" />
                         </button>
                     </div>
