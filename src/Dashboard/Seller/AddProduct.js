@@ -34,7 +34,8 @@ const AddProduct = () => {
             conatct:data.phone,
             description:data.description,
             email:user.email,
-            isSold:false
+            isSold:false,
+            purchage:data.purchage
         }
 
         fetch('http://localhost:5000/products', {
@@ -48,10 +49,10 @@ const AddProduct = () => {
         .then(res => res.json())
         .then(result => {
             if (result.acknowledged) {
-                navigate('/dashboard/myproducts');
-            }
-        })
-        toast('Book added!')
+                toast('Book added!')
+            } 
+        }) 
+        navigate('/dashboard/myproducts');   
     }
 
     return (
@@ -106,20 +107,19 @@ const AddProduct = () => {
                 </div>
                 <div className='flex gap-2'>
                     <div className="form-control w-full">
-                        <label className="label"> <span className="label-text">Year of use</span></label>
-                        <input type="text" {...register("year", {
-                            required: "Year is Required"
+                        <label className="label"> <span className="label-text">Year of purchase</span></label>
+                        <input type="text" {...register("purchage", {
+                            required: "Purchage Year is Required"
                         })} className="input input-bordered w-full p-4 border border-slate-300 rounded-md" />
-                        {errors.year && <p className='text-red-500'>{errors.year.message}</p>}
+                        {errors.purchage && <p className='text-red-500'>{errors.purchage.message}</p>}
                     </div>
                     <div className="form-control w-full">
-                        <label className="label"> <span className="label-text">Select an option</span></label>
-                        <select {...register("category")} className="select w-full p-2 border border-slate-300 rounded-md">
-                            {
-                                categories?.map((ct) => <option value={ct._id}>{ct.categoryName}</option>)
-                            }
-                        </select>
-                    </div>
+                        <label className="label"> <span className="label-text">Year of use</span></label>
+                        <input type="text" {...register("year", {
+                            required: "Year of use is Required"
+                        })} className="input input-bordered w-full p-4 border border-slate-300 rounded-md" />
+                        {errors.year && <p className='text-red-500'>{errors.year.message}</p>}
+                    </div>   
                 </div>
                 <div className='flex gap-2'>
                     <div className="form-control w-full">
@@ -136,6 +136,14 @@ const AddProduct = () => {
                         })} className="input input-bordered w-full p-4 border border-slate-300 rounded-md" />
                         {errors.phone && <p className='text-red-500'>{errors.phone.message}</p>}
                     </div>
+                </div>
+                <div className="form-control w-full">
+                    <label className="label"> <span className="label-text">Select an option</span></label>
+                    <select {...register("category")} className="select w-full p-2 border border-slate-300 rounded-md">
+                        {
+                            categories?.map((ct) => <option value={ct._id}>{ct.categoryName}</option>)
+                        }
+                    </select>
                 </div>
                 <div className="form-control w-full">
                         <label className="label"> <span className="label-text">Description</span></label>

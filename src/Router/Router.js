@@ -19,6 +19,7 @@ import AdminRoute from "./AdminRoute";
 import AddCategory from "../Dashboard/Admin/AddCategory";
 import NotFound from "../Pages/NotFound";
 import Categories from "../Pages/Home/Categories";
+import Payment from "../Dashboard/Buyer/Payment";
 
 const router = createBrowserRouter([
     {
@@ -91,7 +92,12 @@ const router = createBrowserRouter([
             {
                 path:'addcategory',
                 element:<AdminRoute><AddCategory></AddCategory></AdminRoute>
-            }
+            },
+            {
+                path: 'payment/:id',
+                loader: ({params}) => fetch(`http://localhost:5000/booked/${params.id}`),
+                element: <Payment></Payment>
+            },
             
            
 

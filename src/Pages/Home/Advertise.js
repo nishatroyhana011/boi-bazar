@@ -4,7 +4,7 @@ import AdvertiseCard from '../cards/AdvertiseCard';
 
 const Advertise = () => {
 
-    const { data: Advertise = [], refetch } = useQuery({
+    const { data: Advertise = [], } = useQuery({
         queryKey: ['allbooks'],
         queryFn: async () => {
             const res = await fetch(`http://localhost:5000/allbooks`)

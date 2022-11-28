@@ -9,8 +9,12 @@ const Category = () => {
         <div>
             <div className='w-5/6 mx-auto my-10'>
                 {
-                    bookData.map(book =>
-                        <BookCard book={book} key={book._id}></BookCard>)
+                    bookData.map(book => book.isSold ? <>
+                        
+                    </> : <>
+                    <BookCard book={book} key={book._id}></BookCard>
+                    </>
+                       )
                 }
             </div>
             

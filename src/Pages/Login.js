@@ -46,7 +46,6 @@ const Login = () => {
                 const user = res.user;
                 verifyUser(user.email)
                 setLoginError('');
-                console.log('login',user)
             })
             .catch(err => setLoginError(err.message))
     }
