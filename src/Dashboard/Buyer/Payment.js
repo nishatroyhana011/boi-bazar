@@ -17,7 +17,7 @@ const Payment = () => {
     return (
         <div>
             <p className='text-orange-600 text-xl my-5'>Payment for: {pay.bookName}</p>
-            <p>Please pay <strong>${pay.price}</strong></p>
+            <p>Please pay <strong>{pay.price} BDT </strong></p>
             <div className='w-3/4 m-auto'>
             <Elements stripe={stripePromise}>
                 <CheckoutForm pay={pay}></CheckoutForm>
