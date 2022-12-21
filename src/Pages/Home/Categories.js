@@ -1,6 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
-import { Link } from 'react-router-dom';
 import CategoryCard from '../cards/CategoryCard';
 
 const Categories = () => {
@@ -22,10 +21,11 @@ const Categories = () => {
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mx-auto gap-5 w-5/6'>
                 {
                     categories.map(cate=> 
-                        <CategoryCard cate={cate}></CategoryCard>
+                        <CategoryCard cate={cate} key={cate._id}></CategoryCard>
                     )
                 }
             </div>
+            
         </div>
     );
 };

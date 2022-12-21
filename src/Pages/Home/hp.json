@@ -1,0 +1,18 @@
+[
+    {
+        "hId": "h01",
+        "name": "Apollo Hospitals"
+    },
+    {
+        "hId": "h02",
+        "name": "Jawaharlal Nehru Medical College and Hospital"
+    },
+    {
+        "hId": "h03",
+        "name": "Indira Gandhi Institute of Medical Sciences (IGIMS)"
+    },
+    {
+        "hId": "h04",
+        "name": "AIIMS - All India Institute Of Medical Science"
+    }
+]
