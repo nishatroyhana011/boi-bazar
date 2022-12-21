@@ -1,7 +1,7 @@
 # Project Name: BoiBazar
 * Project Link: https://boi-bazar-a1d6c.web.app/
-* Github client side link: https://github.com/rogramming-hero-web-course-4/b612-used-products-resale-clients-side-nishatroyhana011
-* Github server side link: https://github.com/rogramming-hero-web-course-4/b612-used-products-resale-server-side-nishatroyhana011
+* Github client side link: https://github.com/nishatroyhana011/boi-bazar
+* Github server side link: https://github.com/nishatroyhana011/boi-bazar-server
 
 # Credential
 adminEmail: nishatroyhana@gmail.com
